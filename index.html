@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <style media="screen">
+    body {
+      position: relative;
+      background: #212121;
+    }
+
+    img {
+      margin: 10px auto;
+      max-width: 95%;
+    }
+
+    #grid {
+      position: fixed;
+      bottom: 25%;
+      right: 1.5%;
+    }
+
+    #compress {
+      position: fixed;
+      bottom: 15%;
+      right: 1.5%;
+    }
+
+    #expand {
+      position: fixed;
+      bottom: 5%;
+      right: 1.5%;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="btn-floating btn-large waves-effect waves-light green darken-3" id="grid"><i class="fas fa-th-large"></i></a>
+  <a class="btn-floating btn-large waves-effect waves-light blue darken-3" id="compress"><i class="fas fa-compress-alt"></i></a>
+  <a class="btn-floating btn-large waves-effect waves-light red darken-3" id="expand"><i class="fas fa-expand-alt"></i></a>
+  <div class="row">
+    <div class="center-align">
+      <img src="./img/1_modified.jpg" class="s12">
+      <img src="./img/4_modified.jpg">
+      <img src="./img/5_modified.jpg">
+      <img src="./img/6_modified.jpg">
+      <img src="./img/7_modified.jpg">
+      <img src="./img/8_modified.jpg">
+      <img src="./img/9_modified.jpg">
+      <img src="./img/10_modified.jpg">
+      <img src="./img/13_modified.jpg">
+      <img src="./img/14_modified.jpg">
+      <img src="./img/15_modified.jpg">
+      <img src="./img/16_modified.jpg">
+      <img src="./img/17_modified.jpg">
+      <img src="./img/18_modified.jpg">
+      <img src="./img/24_modified.jpg">
+      <img src="./img/25_modified.jpg">
+    </div>
+  </div>
+  <p class="center-align grey-text">作者：big.p</p>
+  <script>
+    const imgArray = document.getElementsByTagName('img');
+    document.getElementById('grid').addEventListener('click', () => {
+      for (let img of imgArray) {
+        if (img.classList.contains('s4') || img.classList.contains('s6')) {
+          img.classList.remove('offset-s3', 'offset-m3', 'offset-l3', 'offset-xl3', 'offset-s4', 'offset-m4', 'offset-l4', 'offset-xl4');
+        }
+      }
+    });
+    document.getElementById('compress').addEventListener('click', () => {
+      for (let img of imgArray) {
+        if (img.classList.contains('s4')) {
+          return
+        } else if (img.classList.contains('s10')) {
+          img.classList.remove('s10', 'm10', 'l10', 'xl10', 'offset-s1', 'offset-m1', 'offset-l1', 'offset-xl1');
+          img.classList.add('s8', 'm8', 'l8', 'xl8', 'offset-s2', 'offset-m2', 'offset-l2', 'offset-xl2');
+        } else if (img.classList.contains('s8')) {
+          img.classList.remove('s8', 'm8', 'l8', 'xl8', 'offset-s2', 'offset-m2', 'offset-l2', 'offset-xl2');
+          img.classList.add('s6', 'm6', 'l6', 'xl6', 'offset-s3', 'offset-m3', 'offset-l3', 'offset-xl3');
+        } else if (img.classList.contains('s6')) {
+          img.classList.remove('s6', 'm6', 'l6', 'xl6', 'offset-s3', 'offset-m3', 'offset-l3', 'offset-xl3');
+          img.classList.add('s4', 'm4', 'l4', 'xl4', 'offset-s4', 'offset-m4', 'offset-l4', 'offset-xl4');
+        } else {
+          img.classList.remove('s12', 'm12', 'l12', 'xl12');
+          img.classList.add('col', 's10', 'm10', 'l10', 'xl10', 'offset-s1', 'offset-m1', 'offset-l1', 'offset-xl1');
+        }
+      }
+    });
+
+    document.getElementById('expand').addEventListener('click', () => {
+      for (let img of imgArray) {
+        if (img.classList.contains('s12')) {
+          break;
+        } else if (img.classList.contains('s10')) {
+          img.classList.remove('col', 's10', 'm10', 'l10', 'xl10', 'offset-s1', 'offset-m1', 'offset-l1', 'offset-xl1');
+          img.classList.add('s12', 'm12', 'l12', 'xl12');
+        } else if (img.classList.contains('s8')) {
+          img.classList.remove('s8', 'm8', 'l8', 'xl8', 'offset-s2', 'offset-m2', 'offset-l2', 'offset-xl2');
+          img.classList.add('s10', 'm10', 'l10', 'xl10', 'offset-s1', 'offset-m1', 'offset-l1', 'offset-xl1');
+        } else if (img.classList.contains('s6')) {
+          img.classList.remove('s6', 'm6', 'l6', 'xl6', 'offset-s3', 'offset-m3', 'offset-l3', 'offset-xl3');
+          img.classList.add('s8', 'm8', 'l8', 'xl8', 'offset-s2', 'offset-m2', 'offset-l2', 'offset-xl2');
+        } else {
+          img.classList.remove('s4', 'm4', 'l4', 'xl4', 'offset-s4', 'offset-m4', 'offset-l4', 'offset-xl4');
+          img.classList.add('s6', 'm6', 'l6', 'xl6', 'offset-s3', 'offset-m3', 'offset-l3', 'offset-xl3');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
